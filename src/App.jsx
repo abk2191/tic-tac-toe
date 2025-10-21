@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Theboard from "./Theboard";
 import Confetti from "react-confetti";
 
@@ -10,6 +10,8 @@ function App() {
   const [winningIndexes, setWinningIndexes] = useState([]);
   const [history, setHistory] = useState([]);
   const [showConfetti, setShowConfetti] = useState(false);
+
+  const audioRef = useRef(null);
 
   const updateBoard = (index) => {
     if (value[index] || winner) return;
@@ -33,6 +35,11 @@ function App() {
     if (gameWinner) {
       setWinner(gameWinner); // Set winner state
       setShowConfetti(true);
+      // Play sound when someone wins
+      if (audioRef.current) {
+        audioRef.current.currentTime = 0; // Reset to start
+        audioRef.current.play();
+      }
     } else if (newValue.every((cell) => cell !== null)) {
       // If all cells are filled and no winner, it's a draw
       setWinner("Draw");
@@ -177,9 +184,29 @@ function App() {
     setHistory((prev) => prev.slice(0, -1));
   };
 
+  useEffect(() => {
+    if (!winner) {
+      setShowConfetti(false);
+    }
+  }, [winner]);
+
   return (
     <>
-      {showConfetti && <Confetti />}
+      <audio ref={audioRef} src="./winner-sound.mp3" preload="auto" />
+      {showConfetti && (
+        <Confetti
+          width={window.innerWidth}
+          height={window.innerHeight}
+          numberOfPieces={150}
+          gravity={0.15}
+          wind={0}
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+          }}
+        />
+      )}
       <h2
         style={{
           fontFamily: "Amarante, serif",
