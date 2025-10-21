@@ -1,0 +1,69 @@
+.board {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #0f172a, #1e293b, #334155);
+}
+
+.container {
+  width: fit-content;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgb(166, 166, 242);
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.buttons {
+  height: 90px;
+  width: 90px;
+  border: 1px solid white;
+  background-color: black;
+  color: white;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.winning-cell {
+  background-color: green;
+  color: white;
+}
+
+.undo-button {
+  margin-top: 20px;
+  height: 40px;
+  background-color: rgb(46, 46, 140);
+  color: white;
+  border: 1px solid rgb(46, 46, 140);
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.undo-button:active {
+  transform: scale(0.95);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
