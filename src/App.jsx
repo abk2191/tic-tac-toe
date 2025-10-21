@@ -215,7 +215,18 @@ function App() {
       >
         Classic Tic-Tac-Toe
       </h2>
-      <div className="container">
+      <div
+        className="container"
+        onClick={() => {
+          // Unlock audio on first tap
+          if (audioRef.current) {
+            audioRef.current.play().then(() => {
+              audioRef.current.pause();
+              audioRef.current.currentTime = 0;
+            });
+          }
+        }}
+      >
         {winner === "Draw" ? (
           <p style={{ fontFamily: "Inter, sans-serif", color: "white" }}>
             It's a Draw! 🤝
