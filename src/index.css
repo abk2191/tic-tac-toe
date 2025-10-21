@@ -88,3 +88,16 @@ body {
 .restart-button:active {
   transform: scale(0.95);
 }
+
+.banner {
+  background: url("./assets/banner-removebg-preview.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 300px;
+  height: 100px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

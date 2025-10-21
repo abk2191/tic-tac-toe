@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import Theboard from "./Theboard";
 import Confetti from "react-confetti";
+import banner from "./assets/banner.jpg";
 
 function App() {
   const [xPlayed, setXPlayed] = useState(true);
@@ -208,14 +209,16 @@ function App() {
         />
       )}
       <div className="wrapper">
-        <h2
-          style={{
-            fontFamily: "Amarante, serif",
-          }}
-          className="gradient-text"
-        >
-          Classic Tic-Tac-Toe
-        </h2>
+        <div className="banner">
+          <h2
+            style={{
+              fontFamily: "Amarante, serif",
+            }}
+            className="gradient-text"
+          >
+            Classic Tic-Tac-Toe
+          </h2>
+        </div>
 
         <div className="container">
           {winner === "Draw" ? (
