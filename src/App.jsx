@@ -13,6 +13,7 @@ function App() {
   const [showConfetti, setShowConfetti] = useState(false);
   const [showEmoji, setShowEmoji] = useState(false);
   const [randomEmoji, setRandomEmoji] = useState("");
+  const [celebrationText, setCelebrationText] = useState("");
 
   const audioRef = useRef(null);
   const emojis = ["😊", "🥰", "😇"];
@@ -43,6 +44,18 @@ function App() {
       // Show random emoji
       const randomIndex = Math.floor(Math.random() * emojis.length);
       setRandomEmoji(emojis[randomIndex]);
+
+      // Set celebration text based on winner
+      const texts = [
+        "Amazing!",
+        "Incredible!",
+        "Brilliant!",
+        "Well Played!",
+        "Fantastic!",
+      ];
+      const randomText = texts[Math.floor(Math.random() * texts.length)];
+      setCelebrationText(randomText);
+
       setShowEmoji(true);
 
       // Auto-hide emoji after animation
@@ -223,10 +236,10 @@ function App() {
         />
       )}
 
-      {/* Emoji Celebration */}
       {showEmoji && (
         <div className="emoji-celebration">
           <span className="emoji">{randomEmoji}</span>
+          <div className="celebration-text">{celebrationText}</div>
         </div>
       )}
 

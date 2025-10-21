@@ -206,12 +206,27 @@ body {
   transform: translate(-50%, -50%);
   z-index: 1000;
   pointer-events: none;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .emoji {
   font-size: 80px;
   display: inline-block;
   animation: emojiCelebration 2s ease-out forwards;
+  margin-bottom: 10px;
+}
+
+.celebration-text {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  animation: textCelebration 2s ease-out forwards;
+  font-family: "Inter", sans-serif;
 }
 
 @keyframes emojiCelebration {
@@ -233,6 +248,24 @@ body {
   }
   100% {
     transform: scale(2.5) rotate(0deg);
+    opacity: 0;
+  }
+}
+
+@keyframes textCelebration {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  30% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-10px);
     opacity: 0;
   }
 }
