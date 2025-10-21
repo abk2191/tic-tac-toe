@@ -186,7 +186,9 @@ function App() {
       </h2>
       <div className="container">
         {winner === "Draw" ? (
-          <p>It's a Draw! 🤝</p>
+          <p style={{ fontFamily: "Inter, sans-serif", color: "white" }}>
+            It's a Draw! 🤝
+          </p>
         ) : winner ? (
           <p style={{ fontFamily: "Inter, sans-serif", color: "white" }}>
             {winner} Wins!
