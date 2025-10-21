@@ -241,6 +241,13 @@ function App() {
         >
           Undo Move ({history.length} moves)
         </button>
+        <button
+          onClick={() => window.location.reload()}
+          disabled={history.length === 0}
+          className="restart-button"
+        >
+          Restart Game
+        </button>
       </div>
     </>
   );

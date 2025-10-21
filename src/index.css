@@ -45,6 +45,7 @@ body {
 .undo-button {
   margin-top: 20px;
   height: 40px;
+  width: 180px;
   background-color: rgb(46, 46, 140);
   color: white;
   border: 1px solid rgb(46, 46, 140);
@@ -66,4 +67,20 @@ body {
   font-weight: bold;
   text-align: center;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.restart-button {
+  margin-top: 15px;
+  height: 40px;
+  width: 180px;
+  background-color: rgb(90, 143, 26);
+  color: white;
+  border: 1px solid rgb(90, 143, 26);
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.restart-button:active {
+  transform: scale(0.95);
 }
