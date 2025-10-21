@@ -11,8 +11,11 @@ function App() {
   const [winningIndexes, setWinningIndexes] = useState([]);
   const [history, setHistory] = useState([]);
   const [showConfetti, setShowConfetti] = useState(false);
+  const [showEmoji, setShowEmoji] = useState(false);
+  const [randomEmoji, setRandomEmoji] = useState("");
 
   const audioRef = useRef(null);
+  const emojis = ["😊", "🥰", "😇"];
 
   const updateBoard = (index) => {
     if (value[index] || winner) return;
@@ -36,6 +39,17 @@ function App() {
     if (gameWinner) {
       setWinner(gameWinner); // Set winner state
       setShowConfetti(true);
+
+      // Show random emoji
+      const randomIndex = Math.floor(Math.random() * emojis.length);
+      setRandomEmoji(emojis[randomIndex]);
+      setShowEmoji(true);
+
+      // Auto-hide emoji after animation
+      setTimeout(() => {
+        setShowEmoji(false);
+      }, 2000);
+
       // Play sound when someone wins
       if (audioRef.current) {
         audioRef.current.currentTime = 0; // Reset to start
@@ -142,13 +156,13 @@ function App() {
     }
     if (value[2] === "X" && value[5] === "X" && value[8] === "X") {
       console.log("X wins");
-      setWinningIndexes([4, 5, 8]);
+      setWinningIndexes([2, 5, 8]);
       return "X";
     }
 
     if (value[2] === "O" && value[5] === "O" && value[8] === "O") {
       console.log("O wins");
-      setWinningIndexes([4, 5, 8]);
+      setWinningIndexes([2, 5, 8]);
       return "O";
     }
     {
@@ -208,6 +222,14 @@ function App() {
           }}
         />
       )}
+
+      {/* Emoji Celebration */}
+      {showEmoji && (
+        <div className="emoji-celebration">
+          <span className="emoji">{randomEmoji}</span>
+        </div>
+      )}
+
       <div className="wrapper">
         <div className="banner">
           <h2
