@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Theboard from "./Theboard";
+import Confetti from "react-confetti";
 
 function App() {
   const [xPlayed, setXPlayed] = useState(true);
@@ -8,6 +9,7 @@ function App() {
   const [winner, setWinner] = useState(null);
   const [winningIndexes, setWinningIndexes] = useState([]);
   const [history, setHistory] = useState([]);
+  const [showConfetti, setShowConfetti] = useState(false);
 
   const updateBoard = (index) => {
     if (value[index] || winner) return;
@@ -30,6 +32,7 @@ function App() {
     const gameWinner = calculatewinner(newValue); // Get the winner
     if (gameWinner) {
       setWinner(gameWinner); // Set winner state
+      setShowConfetti(true);
     } else if (newValue.every((cell) => cell !== null)) {
       // If all cells are filled and no winner, it's a draw
       setWinner("Draw");
@@ -176,6 +179,7 @@ function App() {
 
   return (
     <>
+      {showConfetti && <Confetti />}
       <h2
         style={{
           fontFamily: "Amarante, serif",
