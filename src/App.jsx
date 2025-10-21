@@ -207,47 +207,50 @@ function App() {
           }}
         />
       )}
-      <h2
-        style={{
-          fontFamily: "Amarante, serif",
-        }}
-        className="gradient-text"
-      >
-        Classic Tic-Tac-Toe
-      </h2>
-      <div className="container">
-        {winner === "Draw" ? (
-          <p style={{ fontFamily: "Inter, sans-serif", color: "white" }}>
-            It's a Draw! 🤝
-          </p>
-        ) : winner ? (
-          <p style={{ fontFamily: "Inter, sans-serif", color: "white" }}>
-            {winner} Wins!
-          </p>
-        ) : (
-          <p style={{ fontFamily: "Inter, sans-serif", color: "white" }}>
-            {player}'s Turn
-          </p>
-        )}
-        <Theboard
-          updateBoard={updateBoard}
-          value={value}
-          winningIndexes={winningIndexes}
-        />
-        <button
-          onClick={undoMove}
-          disabled={history.length === 0}
-          className="undo-button"
+      <div className="wrapper">
+        <h2
+          style={{
+            fontFamily: "Amarante, serif",
+          }}
+          className="gradient-text"
         >
-          Undo Move ({history.length} moves)
-        </button>
-        <button
-          onClick={() => window.location.reload()}
-          disabled={history.length === 0}
-          className="restart-button"
-        >
-          Restart Game
-        </button>
+          Classic Tic-Tac-Toe
+        </h2>
+
+        <div className="container">
+          {winner === "Draw" ? (
+            <p style={{ fontFamily: "Inter, sans-serif", color: "white" }}>
+              It's a Draw! 🤝
+            </p>
+          ) : winner ? (
+            <p style={{ fontFamily: "Inter, sans-serif", color: "white" }}>
+              {winner} Wins!
+            </p>
+          ) : (
+            <p style={{ fontFamily: "Inter, sans-serif", color: "white" }}>
+              {player}'s Turn
+            </p>
+          )}
+          <Theboard
+            updateBoard={updateBoard}
+            value={value}
+            winningIndexes={winningIndexes}
+          />
+          <button
+            onClick={undoMove}
+            disabled={history.length === 0}
+            className="undo-button"
+          >
+            Undo Move ({history.length} moves)
+          </button>
+          <button
+            onClick={() => window.location.reload()}
+            disabled={history.length === 0}
+            className="restart-button"
+          >
+            Restart Game
+          </button>
+        </div>
       </div>
     </>
   );
